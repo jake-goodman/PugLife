@@ -42,16 +42,9 @@ class PLCollectionViewController: UIViewController {
         clipboardAlertLabel.alpha = 0
         clipboardAlertLabel.layer.cornerRadius = 12
         
-        
         loadMorePugs() {
             
         }
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func loadMorePugs(completion: @escaping ()->Void) {
@@ -72,7 +65,6 @@ class PLCollectionViewController: UIViewController {
 
     @objc func handleLongPressGesture(_ recognizer: UILongPressGestureRecognizer) {
         guard recognizer.state == .began else { return }
-        print("Began long press")
 
         let point = recognizer.location(in: self.collectionView)
         
@@ -141,8 +133,6 @@ extension PLCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Did select item at")
-
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let imageVC = storyboard.instantiateViewController(withIdentifier: "PLImageViewController") as? PLImageViewController else  { return }
         
