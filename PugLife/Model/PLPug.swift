@@ -1,5 +1,5 @@
 //
-//  Pug.swift
+//  PLPug.swift
 //  PugLife
 //
 //  Created by Jake Goodman on 9/20/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Pug {
+struct PLPug {
     let imageUrl: URL
     
     init(url: URL) {

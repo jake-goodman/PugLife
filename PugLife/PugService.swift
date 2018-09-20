@@ -14,7 +14,7 @@ class PugService {
         static let baseURL = URL(string: "https://pugme.herokuapp.com/bomb?count=50")!
     }
 
-    func getPugs(completion: @escaping ([Pug], Error?)->Void) {
+    func getPugs(completion: @escaping ([PLPug], Error?)->Void) {
         var request = URLRequest(url: Constants.baseURL)
         request.httpMethod = "GET"
         
@@ -23,11 +23,11 @@ class PugService {
                 completion([], error)
                 return
             }
-            var pugs: [Pug] = []
+            var pugs: [PLPug] = []
             if let jsonDict = json as? [String: Any], let pugPaths = jsonDict["pugs"] as? [String]  {
                 for path in pugPaths {
                     if let url = URL(string: path) {
-                        pugs.append(Pug(url: url))
+                        pugs.append(PLPug(url: url))
                     }
                 }
             }

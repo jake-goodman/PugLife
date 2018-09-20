@@ -1,0 +1,6 @@
+framework module Pods_PugLife {
+  umbrella header "Pods-PugLife-umbrella.h"
+
+  export *
+  module * { export * }
+}

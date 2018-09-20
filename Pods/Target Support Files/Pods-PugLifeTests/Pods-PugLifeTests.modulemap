@@ -1,0 +1,6 @@
+framework module Pods_PugLifeTests {
+  umbrella header "Pods-PugLifeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
