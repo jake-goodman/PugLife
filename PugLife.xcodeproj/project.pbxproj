@@ -78,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				233E234F21540A980023E4AA /* PugLife */,
-				233E235021540A980023E4AA /* AppDelegate.swift */,
 				233E236421540A9A0023E4AA /* PugLifeTests */,
 				233E234E21540A980023E4AA /* Products */,
 				5917ED183C84554C7FC3A898 /* Pods */,
@@ -101,11 +100,12 @@
 				23D0DF7821540D3D0039FC54 /* Model */,
 				23D5FD5F215415E600455B76 /* View */,
 				23D5FD5E215415CB00455B76 /* Controller */,
+				23719EB221542E7300255964 /* Network Service */,
 				233E235421540A980023E4AA /* Main.storyboard */,
 				233E235721540A990023E4AA /* Assets.xcassets */,
 				233E235921540A990023E4AA /* LaunchScreen.storyboard */,
 				233E235C21540A990023E4AA /* Info.plist */,
-				23D0DF7B21540D970039FC54 /* PugService.swift */,
+				233E235021540A980023E4AA /* AppDelegate.swift */,
 			);
 			path = PugLife;
 			sourceTree = "<group>";
@@ -117,6 +117,14 @@
 				233E236721540A9A0023E4AA /* Info.plist */,
 			);
 			path = PugLifeTests;
+			sourceTree = "<group>";
+		};
+		23719EB221542E7300255964 /* Network Service */ = {
+			isa = PBXGroup;
+			children = (
+				23D0DF7B21540D970039FC54 /* PugService.swift */,
+			);
+			path = "Network Service";
 			sourceTree = "<group>";
 		};
 		23D0DF7821540D3D0039FC54 /* Model */ = {

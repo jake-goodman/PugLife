@@ -25,10 +25,11 @@ class PugService {
             }
             var pugs: [PLPug] = []
             if let jsonDict = json as? [String: Any], let pugPaths = jsonDict["pugs"] as? [String]  {
-                for path in pugPaths {
+                pugs = pugPaths.compactMap() { (path) in
                     if let url = URL(string: path) {
-                        pugs.append(PLPug(url: url))
+                        return PLPug(url: url)
                     }
+                    return nil
                 }
             }
             completion(pugs, error)
