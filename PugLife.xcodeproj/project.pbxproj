@@ -13,6 +13,7 @@
 		233E235821540A990023E4AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 233E235721540A990023E4AA /* Assets.xcassets */; };
 		233E235B21540A990023E4AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 233E235921540A990023E4AA /* LaunchScreen.storyboard */; };
 		233E236621540A9A0023E4AA /* PugLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233E236521540A9A0023E4AA /* PugLifeTests.swift */; };
+		23719EAF215421C700255964 /* PLImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23719EAE215421C700255964 /* PLImageViewController.swift */; };
 		23D0DF7A21540D460039FC54 /* PLPug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D0DF7921540D460039FC54 /* PLPug.swift */; };
 		23D0DF7C21540D970039FC54 /* PugService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D0DF7B21540D970039FC54 /* PugService.swift */; };
 		23D5FD612154160600455B76 /* PLImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5FD602154160600455B76 /* PLImageCollectionViewCell.swift */; };
@@ -42,6 +43,7 @@
 		233E236121540A9A0023E4AA /* PugLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PugLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		233E236521540A9A0023E4AA /* PugLifeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PugLifeTests.swift; sourceTree = "<group>"; };
 		233E236721540A9A0023E4AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23719EAE215421C700255964 /* PLImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLImageViewController.swift; sourceTree = "<group>"; };
 		23D0DF7921540D460039FC54 /* PLPug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLPug.swift; sourceTree = "<group>"; };
 		23D0DF7B21540D970039FC54 /* PugService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PugService.swift; sourceTree = "<group>"; };
 		23D5FD602154160600455B76 /* PLImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				233E235221540A980023E4AA /* PLCollectionViewController.swift */,
+				23719EAE215421C700255964 /* PLImageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23719EAF215421C700255964 /* PLImageViewController.swift in Sources */,
 				23D0DF7C21540D970039FC54 /* PugService.swift in Sources */,
 				23D0DF7A21540D460039FC54 /* PLPug.swift in Sources */,
 				233E235321540A980023E4AA /* PLCollectionViewController.swift in Sources */,

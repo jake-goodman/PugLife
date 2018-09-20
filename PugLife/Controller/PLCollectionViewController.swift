@@ -15,17 +15,34 @@ class PLCollectionViewController: UIViewController {
         static let collectionViewPadding: CGFloat = 2
         static let collectionViewNumberToFit: CGFloat = 3
         static let collectionViewPlaceholderImage: UIImage = #imageLiteral(resourceName: "pug-placeholder")
+        
+        static let clipboardTextSuccess: String = "Copied to Clipboard"
+        static let clipboardTextError: String = "Error Copying Image"
+        static let clipboardAnimationDuration: Double  = 0.33
+        static let clipboardDisplayDuration: Double  = 1.0
     }
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var clipboardAlertLabel: UILabel!
     
     var pugs: [PLPug] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(PLCollectionViewController.handleLongPressGesture(_:)))
+        longPressRecognizer.delaysTouchesBegan = true
+        longPressRecognizer.minimumPressDuration = 0.5
+        collectionView.addGestureRecognizer(longPressRecognizer)
+        
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        clipboardAlertLabel.alpha = 0
+        clipboardAlertLabel.layer.cornerRadius = 12
+        
+        
         loadMorePugs() {
             
         }
@@ -53,6 +70,35 @@ class PLCollectionViewController: UIViewController {
         }
     }
 
+    @objc func handleLongPressGesture(_ recognizer: UILongPressGestureRecognizer) {
+        guard recognizer.state == .began else { return }
+        print("Began long press")
+
+        let point = recognizer.location(in: self.collectionView)
+        
+        if let indexPath = self.collectionView.indexPathForItem(at: point), let cell = self.collectionView.cellForItem(at: indexPath) as? PLImageCollectionViewCell {
+            
+            if let image = cell.imageView.image {
+                UIPasteboard.general.image = image
+                clipboardAlertLabel.text = Constants.clipboardTextSuccess
+            }
+            else {
+                clipboardAlertLabel.text = Constants.clipboardTextError
+            }
+            
+            let fadeInBlock: ()->Void = { self.clipboardAlertLabel.alpha = 1.0 }
+            let fadeOutBlock: (Bool)->Void = { [weak self] (completed) in
+                UIView.animate(withDuration: Constants.clipboardAnimationDuration,
+                               delay: Constants.clipboardDisplayDuration,
+                               options: UIViewAnimationOptions.curveEaseInOut,
+                               animations: {self?.clipboardAlertLabel.alpha = 0},
+                               completion: nil)
+            }
+            UIView.animate(withDuration: Constants.clipboardAnimationDuration,
+                           animations: fadeInBlock,
+                           completion: fadeOutBlock)
+        }
+    }
 }
 
 extension PLCollectionViewController: UICollectionViewDataSource {
@@ -95,7 +141,14 @@ extension PLCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Did select item at")
 
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let imageVC = storyboard.instantiateViewController(withIdentifier: "PLImageViewController") as? PLImageViewController else  { return }
+        
+        let pug = self.pugs[indexPath.row]
+        imageVC.resource = pug.imageUrl
+        present(imageVC, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
